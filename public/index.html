@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/bundle.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(task,index) in tasks" v-bind:class="task.completed ? 'complete' : 'incomplete'">
+        <span>{{task.task}}</span>
+        <span v-if="task.completed">Completed</span>
+        <button v-if="!task.completed" v-on:click="completeTask(index)">Mark as complete</button>
+      </li>
+    </ul>
+
+    <form v-on:submit.prevent="saveNewTask" >
+      <label for="new-task">Add a new task:</label>
+      <input v-modle="newTask" type="text" id="new-task">
+      <input type="submit" value="Save new task"/>
+    </form>
+  </div>
+
+</body>
+</html>
